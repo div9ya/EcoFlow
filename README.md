@@ -1,49 +1,73 @@
-Traffic Impact Dashboard
+✨🚦 TRAFFIC IMPACT DASHBOARD
+Real-Time Traffic Monitoring • TomTom API • Flask • Socket.IO • Interactive Maps
+<p align="center"> <img src="https://img.shields.io/badge/Python-3.10+-blue?style=for-the-badge" /> <img src="https://img.shields.io/badge/Flask-Backend-black?style=for-the-badge" /> <img src="https://img.shields.io/badge/Socket.IO-Real--Time-green?style=for-the-badge" /> <img src="https://img.shields.io/badge/TomTom-API-red?style=for-the-badge" /> <img src="https://img.shields.io/badge/Status-Active-success?style=for-the-badge" /> </p>
+🔥 Overview
 
-A real-time traffic visualization dashboard built using Flask, Socket.IO, JavaScript, and TomTom Traffic APIs. It displays congestion levels, live incidents, and safe/eco route suggestions using interactive maps and dynamic data processing.
+The Traffic Impact Dashboard provides live congestion monitoring, accident detection, safe/eco route suggestions, and traffic incident mapping using TomTom Traffic APIs.
+Built with Flask + Socket.IO + JavaScript, it offers real-time updates on an interactive map.
 
-🔥 Features
+🧭 Key Features
+✅ Real-Time Traffic Flow
 
-Real-time Traffic Flow Data using TomTom flowSegmentData API
+Uses TomTom Flow Segment Data API
 
-Live Incident Mapping (accidents, blocks, construction)
+Shows road speed, congestion level & traffic density
 
-Safe Route vs Eco Route Analysis
+Dynamic color-coding (green = safe, yellow = moderate, red = danger)
 
-Dynamic Map Visualization (color-coded safe/moderate/danger roads)
+🚨 Live Incident Layer
 
-Flask Backend + Socket.IO for instant updates
+Accident reports
 
-Future ML Support:
+Road closures
 
-Congestion Prediction
+Construction warnings
 
-Route Optimization
+Weather-based alerts
 
-Travel Time Forecasting
+🛣 Smart Route Suggestions
 
-📁 Project Structure
-.
-├── static/
-│   ├── css/
-│   └── js/
-│       └── dashboard.js
-├── templates/
-│   └── index.html
+Safe Route → Smooth & low congestion
+
+Eco Route → Fuel-efficient shortest travel
+
+🧠 Future ML Enhancements
+
+Traffic prediction
+
+Travel-time forecasting
+
+Incident severity classification
+
+Historical pattern analytics
+
+📂 Project Structure
+📦 Traffic Impact Dashboard
+│
+├── 📁 static/
+│     ├── css/
+│     └── js/
+│         └── dashboard.js
+│
+├── 📁 templates/
+│     └── index.html
+│
 ├── app.py
 ├── config.py
 └── README.md
 
-🛠 Technologies Used
-Frontend
+🛠 Tech Stack
+🎨 Frontend
 
-HTML, CSS
+HTML5
+
+CSS3
 
 JavaScript
 
 Leaflet.js / TomTom Maps SDK
 
-Backend
+⚙️ Backend
 
 Python Flask
 
@@ -51,45 +75,35 @@ Flask-SocketIO
 
 Requests Library
 
-Traffic APIs
+🌐 APIs
 
 TomTom Traffic Flow API
 
-TomTom Incident Viewport API
-
 TomTom Routing API
 
-⚙️ Installation
-1. Clone the repository
+TomTom Incident Viewport API
+
+🚀 Installation Guide
+1️⃣ Clone Repository
 git clone https://github.com/your-username/your-repo.git
 cd your-repo
 
-2. Create a virtual environment
+2️⃣ Create Virtual Environment
 python -m venv venv
 venv\Scripts\activate   # Windows
 source venv/bin/activate   # Linux/Mac
 
-3. Install dependencies
+3️⃣ Install Requirements
 pip install -r requirements.txt
 
-4. Add TomTom API Key
+4️⃣ Add TomTom API Key
 
-Create a file named config.py:
+Create config.py:
 
 TOMTOM_API_KEY = "your_api_key_here"
 
-5. Run the Flask server
+5️⃣ Run the Server
 python app.py
 
-6. Open in browser
+🌍 Open in Browser
 http://127.0.0.1:5000
-
-📡 API Endpoints
-✔ Traffic Flow Data
-GET /api/flowSegmentData?lat=<lat>&lon=<lon>
-
-✔ Incident Data
-GET /api/incidents
-
-✔ Route Analysis
-GET /api/routeAnalysis?start=<lat,lon>&end=<lat,lon>
