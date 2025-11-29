@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Environmental Impact Analysis</title>
+
+    <!-- TomTom Map SDK -->
+    <link rel="stylesheet" href="https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.19.0/maps/maps.css">
+    <script src="https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.19.0/maps/maps-web.min.js"></script>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: #eef2f5;
+        }
+        #map {
+            width: 100%;
+            height: 100vh;
+        }
+        .info-box {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: white;
+            padding: 20px;
+            width: 340px;
+            border-radius: 15px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.15);
+            font-size: 14px;
+        }
+        .info-box h3 {
+            margin-top: 0;
+            font-size: 20px;
+            color: #206a5d;
+            border-bottom: 2px solid #cce8e1;
+            padding-bottom: 6px;
+        }
+
+        /* NEW BUTTONS */
+        .feature-buttons {
+            margin-top: 15px;
+            text-align: center;
+        }
+        .feature-buttons a {
+            display: block;
+            margin: 8px 0;
+            padding: 10px;
+            background: #206a5d;
+            color: white;
+            border-radius: 10px;
+            text-decoration: none;
+            font-size: 15px;
+        }
+        .feature-buttons a:hover {
+            background: #1b5a50;
+        }
+    </style>
+</head>
+<body>
+
+<div id="map"></div>
+
+<div class="info-box" id="envInfo">
+    <h3>Environmental Impact 🌱</h3>
+    <p>Click anywhere on the map to analyze pollution.</p>
+
+    <div class="feature-buttons">
+        <a href="/aqi-trend">📉 View AQI Trend</a>
+        <a href="/aqi-heatmap">🌡 View AQI Heatmap</a>
+    </div>
+</div>
+
+<script src="{{ url_for('static', filename='environmental-impact.js') }}"></script>
+
+</body>
+</html>

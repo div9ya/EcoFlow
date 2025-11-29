@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AQI Trend - 24 Hour</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial;
+            background: #eef2f5;
+            text-align: center;
+            padding-top: 20px;
+        }
+        #chartContainer {
+            width: 80%;
+            margin: 40px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 0 10px #0003;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>AQI Trend (24 Hours) 📉</h1>
+
+    <div id="chartContainer">
+        <canvas id="aqiChart"></canvas>
+    </div>
+
+    <script src="{{ url_for('static', filename='aqi-trend.js') }}"></script>
+</body>
+</html>

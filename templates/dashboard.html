@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Geo-Intelligence Dashboard</title>
+
+    <link
+      rel="stylesheet"
+      href="https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.19.0/maps/maps.css"
+    />
+    <script src="https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.19.0/maps/maps-web.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <style>
+      :root {
+        --background: hsl(35, 40%, 96%);
+        --foreground: hsl(25, 30%, 20%);
+        --card: hsl(0, 0%, 100%);
+        --card-foreground: hsl(25, 30%, 20%);
+        --primary: hsl(15, 85%, 60%);
+        --primary-foreground: hsl(0, 0%, 100%);
+        --secondary: hsl(200, 75%, 55%);
+        --secondary-foreground: hsl(0, 0%, 100%);
+        --muted: hsl(35, 25%, 90%);
+        --muted-foreground: hsl(25, 20%, 45%);
+        --accent: hsl(280, 65%, 60%);
+        --accent-foreground: hsl(0, 0%, 100%);
+        --border: hsl(35, 20%, 88%);
+        --gradient-coral: linear-gradient(
+          135deg,
+          hsl(15, 85%, 60%),
+          hsl(340, 75%, 65%)
+        );
+        --gradient-blue: linear-gradient(
+          135deg,
+          hsl(200, 75%, 55%),
+          hsl(220, 70%, 65%)
+        );
+        --shadow-soft: 0 4px 20px -4px hsla(15, 85%, 60%, 0.15);
+        --shadow-hover: 0 8px 30px -6px hsla(15, 85%, 60%, 0.25);
+        --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        --radius: 1rem;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto,
+          "Helvetica Neue", Arial;
+        background: var(--background);
+        color: var(--foreground);
+      }
+
+      header {
+        padding: 20px 32px;
+        display: flex;
+        align-items: center;
+        gap: 16px;
+      }
+      header img {
+        height: 60px;
+      }
+      h1 {
+        margin: 0;
+        font-size: 24px;
+      }
+      #map {
+        width: 100%;
+        height: 100%;
+        min-height: 500px; 
+      }
+
+      .map-container {
+        height: 100%;
+        width: 100%;
+        position: relative;
+      }
+
+      .tt-map,
+      .tt-map .mapboxgl-canvas {
+        width: 100% !important;
+        height: 100% !important;
+      }
+
+      .container {
+        display: grid;
+        grid-template-columns: 420px 1fr 360px;
+        grid-template-rows: 220px 1fr;
+        gap: 20px;
+        padding: 0 32px 32px 32px;
+      }
+
+      .card {
+        background: var(--card);
+        color: var(--card-foreground);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow-soft);
+        padding: 16px;
+        border: 1px solid var(--border);
+      }
+
+      .controls {
+        grid-column: 1;
+        grid-row: 1 / span 2;
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+      }
+      .small-metric {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 8px;
+        padding: 12px;
+        border-radius: 12px;
+        background: var(--muted);
+        color: var(--muted-foreground);
+      }
+      .map-card {
+        grid-column: 2;
+        grid-row: 1 / span 2;
+        padding: 0;
+        overflow: hidden;
+        border-radius: 12px;
+      }
+      #map {
+        width: 100%;
+        height: calc(100% - 0px);
+        min-height: 500px;
+      }
+
+      .right-top {
+        grid-column: 3;
+        grid-row: 1;
+      }
+      .right-bottom {
+        grid-column: 3;
+        grid-row: 2;
+        overflow: auto;
+      }
+
+      .controls .card {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      label {
+        font-size: 13px;
+        color: var(--muted-foreground);
+      }
+      input[type="text"] {
+        padding: 10px;
+        border-radius: 8px;
+        border: 1px solid var(--border);
+        width: 100%;
+      }
+
+      .btn {
+        display: inline-block;
+        padding: 10px;
+        border-radius: 10px;
+        cursor: pointer;
+        border: none;
+        color: var(--primary-foreground);
+        background: var(--primary);
+        font-weight: 600;
+      }
+      .btn.secondary {
+        background: var(--secondary);
+        color: var(--secondary-foreground);
+      }
+      .btn.ghost {
+        background: transparent;
+        border: 1px solid var(--border);
+        color: var(--foreground);
+      }
+
+      .incident-list {
+        max-height: 200px;
+        overflow: auto;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+      .incident-item {
+        padding: 8px;
+        border-radius: 8px;
+        background: var(--muted);
+        color: var(--muted-foreground);
+        font-size: 13px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .chart-wrap {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+      canvas {
+        width: 100% !important;
+        height: 220px !important;
+      }
+
+      .small-note {
+        font-size: 13px;
+        color: var(--muted-foreground);
+      }
+
+      @media (max-width: 1000px) {
+        .container {
+          grid-template-columns: 1fr;
+          grid-template-rows: auto;
+        }
+        .controls {
+          grid-column: 1;
+          grid-row: 2;
+          order: 1;
+        }
+        .map-card {
+          grid-column: 1;
+          grid-row: 1;
+          order: 0;
+        }
+        .right-top,
+        .right-bottom {
+          grid-column: 1;
+          grid-row: auto;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <img
+        src="{{ url_for('static', filename='logo.png') }}"
+        alt=""
+        srcset=""
+      />
+      <h1>Smart Traffic & Environmental Dashboard</h1>
+    </header>
+
+    <main class="container">
+      <div class="controls card">
+        <div>
+          <div class="small-metric">
+            <div>Total Incidents</div>
+            <div id="metric-incidents">--</div>
+          </div>
+          <div style="height: 8px"></div>
+          <div class="small-metric">
+            <div>Avg Congestion</div>
+            <div id="metric-congestion">--</div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3 style="margin: 0 0 6px 0">Routing</h3>
+          <label>Start (lat,lon)</label>
+          <input id="start" type="text" placeholder="51.5072,-0.1276" />
+
+          <label>End (lat,lon)</label>
+          <input id="end" type="text" placeholder="51.5200,-0.1000" />
+
+          <div style="display: flex; gap: 8px; margin-top: 8px">
+            <button class="btn" id="ecoBtn">Eco Route</button>
+            <button class="btn secondary" id="safeBtn">Safe Route</button>
+          </div>
+
+          <div id="routeDetails" style="margin-top: 10px" class="small-note">
+            Distance: -- <br />
+            ETA: --
+          </div>
+        </div>
+
+        <div class="card">
+          <h3 style="margin: 0 0 6px 0">Nearby Incidents</h3>
+          <div class="incident-list" id="incidentList">
+            <div class="small-note">
+              Click on an incident on the map to see details
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3 style="margin: 0 0 6px 0">Environmental Quick View</h3>
+          <div class="small-note">
+            PM2.5: <strong id="quick-pm25">--</strong><br />
+            PM10: <strong id="quick-pm10">--</strong><br />
+            NO₂: <strong id="quick-no2">--</strong>
+          </div>
+        </div>
+      </div>
+
+      <div class="map-container">
+        <div id="map"></div>
+      </div>
+
+      <div class="right-top card chart-wrap">
+        <h3 style="margin: 0">AQI Levels (sample)</h3>
+        <canvas id="aqiChart"></canvas>
+      </div>
+
+      <div class="right-bottom card">
+        <h3 style="margin: 0 0 8px 0">Environmental Impact</h3>
+        <div id="envInfo" class="small-note">
+          Click on the map to analyze a location
+        </div>
+        <div style="height: 12px"></div>
+        <h4 style="margin: 0 0 6px 0">Safe Route Description</h4>
+        <div class="small-note">
+          <strong>Safe Route — Low-Risk Navigation:</strong> Calculate routes
+          that avoid current incidents and congested segments to minimise
+          accident risk and exposure to hazardous road conditions.
+        </div>
+      </div>
+    </main>
+
+    <script src="{{ url_for('static', filename='dashboard.js') }}"></script>
+  </body>
+</html>

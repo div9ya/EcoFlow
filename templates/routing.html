@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Smart Eco Routing</title>
+
+    <link rel="stylesheet" href="https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.19.0/maps/maps.css">
+    <script src="https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.19.0/maps/maps-web.min.js"></script>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial;
+            overflow: hidden;
+        }
+
+        #map {
+            width: 100%;
+            height: 100vh;
+        }
+
+        .sidebar {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            width: 300px;
+            background: #0f172a;
+            color: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+            z-index: 20;
+        }
+
+        .sidebar input {
+            width: 100%;
+            padding: 10px;
+            border-radius: 6px;
+            border: none;
+            margin-bottom: 10px;
+        }
+
+        .sidebar button {
+            width: 100%;
+            padding: 10px;
+            background: #22c55e;
+            border: none;
+            border-radius: 6px;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+
+        .sidebar button:hover {
+            background: #16a34a;
+        }
+
+        #routeDetails {
+            margin-top: 10px;
+            font-size: 14px;
+            color: #e2e8f0;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="sidebar">
+    <h2>🚗 Smart Routing</h2>
+
+    <label>Start (lat,lon)</label>
+    <input id="start" placeholder="51.5072,-0.1276">
+
+    <label>End (lat,lon)</label>
+    <input id="end" placeholder="51.5200,-0.1000">
+
+    <button onclick="ecoRoute()">Eco Route (Low Emission)</button>
+    <button onclick="reachableRange()">Fuel Reachable Range</button>
+
+    <div id="routeDetails"></div>
+</div>
+
+<div id="map"></div>
+
+<script src="{{ url_for('static', filename='advanced-routing.js') }}"></script>
+
+</body>
+</html>

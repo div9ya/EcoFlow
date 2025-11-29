@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Feature Showcase - Modern Homepage</title>
+    <meta
+      name="description"
+      content="Explore our innovative features and creative solutions"
+    />
+    <meta name="author" content="Your Brand" />
+
+    <meta property="og:title" content="Feature Showcase - Modern Homepage" />
+    <meta
+      property="og:description"
+      content="Explore our innovative features and creative solutions"
+    />
+    <meta property="og:type" content="website" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+  </head>
+  <body>
+    <nav id="navbar" class="navbar">
+      <div class="container">
+        <div class="navbar-content">
+          
+          <img src="{{ url_for('static', filename='logo.png') }}" alt="Logo">
+          <div class="nav-links">
+            <button onclick="scrollToSection('home')" class="nav-link">
+              Home
+            </button>
+            <button onclick="scrollToSection('features')" class="nav-link">
+              Features
+            </button>
+            <button onclick="scrollToSection('contact')" class="nav-link">
+              Contact
+            </button>
+            <a href="{{ url_for('dashboard') }}" class="btn btn-gradient btn-lg">
+                Dashboard ->
+              </a>
+          </div>
+
+          <button
+            class="mobile-menu-btn"
+            id="mobileMenuBtn"
+            aria-label="Toggle menu"
+          >
+            <span class="menu-icon"></span>
+          </button>
+        </div>
+
+        <div class="mobile-menu" id="mobileMenu">
+          <button onclick="scrollToSection('home')" class="mobile-nav-link">
+            Home
+          </button>
+          <button onclick="scrollToSection('features')" class="mobile-nav-link">
+            Features
+          </button>
+          <button onclick="scrollToSection('contact')" class="mobile-nav-link">
+            Contact
+          </button>
+          
+          <button
+            onclick="scrollToSection('contact')"
+            class="btn btn-primary btn-full"
+          >
+            Get Started
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <main id="home">
+      <section class="hero-section">
+        <div class="hero-bg-blur hero-bg-blur-1"></div>
+        <div class="hero-bg-blur hero-bg-blur-2"></div>
+
+        <div class="container">
+          <div class="hero-grid">
+            <div class="hero-content animate-fade-in">
+              <h1 class="hero-title">
+                <span class="gradient-text">Traffic & Environmental</span>
+                <br />
+                <span class="gradient-text">Impact Analysis</span>
+              </h1>
+              <p class="hero-description">
+                Analyze traffic patterns and mobility data to understand
+                environmental impacts including air pollution, noise, and fuel
+                consumption.
+              </p>
+              <div class="hero-buttons">
+                <button
+                  onclick="scrollToSection('features')"
+                  class="btn btn-gradient btn-lg"
+                >
+                  Explore Features
+                </button>
+                
+                <a href="{{ url_for('dashboard') }}" class="btn btn-gradient btn-lg">
+                Dashboard ->
+              </a>
+              </div>
+            </div>
+
+            <div class="hero-image animate-fade-in-delay">
+              <img
+                src="{{ url_for('static', filename='hero.png') }}"
+                alt="Hero illustration showcasing modern digital workspace"
+              />
+            </div>
+          </div>
+
+          <button
+            onclick="scrollToSection('features')"
+            class="scroll-indicator"
+            aria-label="Scroll to features"
+          >
+            <svg
+              class="scroll-icon"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </button>
+        </div>
+      </section>
+      <div class="features-container">
+        <!-- Real-time -->
+        <div class="feature-item">
+          <img
+            src="{{ url_for('static', filename='realtime.png') }}"
+            alt="Real-time Icon"
+            class="feature-img"
+          />
+          <h3 class="feature-title">Real-time</h3>
+          <p class="feature-subtitle">Data Analysis</p>
+        </div>
+
+        <div class="feature-item">
+          <img
+            src="{{ url_for('static', filename='hotspot2.png') }}"
+            alt="Hotspot Icon"
+            class="feature-img"
+          />
+          <h3 class="feature-title">Hotspot</h3>
+          <p class="feature-subtitle">Detection</p>
+        </div>
+
+        <div class="feature-item">
+          <img src="{{ url_for('static', filename='ai.png') }}" alt="AI Powered Icon" class="feature-img" />
+          <h3 class="feature-title">AI-Powered</h3>
+          <p class="feature-subtitle">Predictions</p>
+        </div>
+      </div>
+
+      <section id="features" class="features-section">
+        <div class="section-bg-blur section-bg-blur-1"></div>
+        <div class="section-bg-blur section-bg-blur-2"></div>
+
+        <div class="container">
+          <div class="section-header animate-fade-in">
+            <h2 class="section-title gradient-text">
+              Comprehensive Platform Capabilities
+            </h2>
+            <p class="section-description">
+              Everything you need to understand and optimize the relationship
+              between traffic and environmental impact.
+            </p>
+          </div>
+
+          <div class="features-grid animate-fade-in-delay">
+            <div class="feature-card" style="animation-delay: 0ms">
+              <div class="feature-gradient-bg gradient-coral"></div>
+              <div class="feature-icon gradient-coral">
+                <svg
+                  width="32"
+                  height="32"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="white"
+                  stroke-width="2"
+                >
+                  <path
+                    d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"
+                  />
+                </svg>
+              </div>
+              <h3 class="feature-title">Traffic Pattern Analysis</h3>
+              <p class="feature-description">
+                Advanced algorithms to analyze traffic flow, congestion points,
+                and mobility patterns in real-time.
+              </p>
+              <br />
+              <a href="{{ url_for('traffic_visualization') }}" class="btn-link">
+                Check here ->
+              </a>
+              <div class="feature-decoration"></div>
+            </div>
+
+            <div class="feature-card" style="animation-delay: 100ms">
+              <div class="feature-gradient-bg gradient-blue"></div>
+              <div class="feature-icon gradient-blue">
+                <svg
+                  width="32"
+                  height="32"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="white"
+                  stroke-width="2"
+                >
+                  <path
+                    d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"
+                  />
+                  <path
+                    d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"
+                  />
+                  <path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0" />
+                  <path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5" />
+                </svg>
+              </div>
+              <h3 class="feature-title">Environmental Impact Visualization </h3>
+              <p class="feature-description">
+                Displays live air quality (PM2.5, PM10, NO₂), noise estimation, and emission levels (CO₂, NOx) linked to actual traffic conditions.
+                
+              </p>
+              <br>
+              <a href="{{ url_for('environment_impact') }}" class="btn-link">
+                Check here ->
+              </a>
+              <div class="feature-decoration"></div>
+            </div>
+
+            <div class="feature-card" style="animation-delay: 200ms">
+              <div class="feature-gradient-bg gradient-coral"></div>
+              <div class="feature-icon gradient-coral">
+                <svg
+                  width="32"
+                  height="32"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="white"
+                  stroke-width="2"
+                >
+                  <rect width="18" height="11" x="3" y="11" rx="2" ry="2" />
+                  <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+                </svg>
+              </div>
+              <h3 class="feature-title">Safe Route Recommendation</h3>
+              <p class="feature-description">
+                Find the safest, low-risk path by avoiding accident-prone and congested zones based on real-time traffic & incident data.
+              </p>
+              <br>
+              <a href="{{ url_for('routing') }}" class="btn-link">
+                Check here ->
+              </a>
+              <div class="feature-decoration"></div>
+            </div>
+
+            <div class="feature-card" style="animation-delay: 300ms">
+              <div class="feature-gradient-bg gradient-blue"></div>
+              <div class="feature-icon gradient-blue">
+                <svg
+                  width="32"
+                  height="32"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="white"
+                  stroke-width="2"
+                >
+                  <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+                </svg>
+              </div>
+              <h3 class="feature-title">Powerful Features</h3>
+              <p class="feature-description">
+                Comprehensive toolkit with advanced capabilities to meet all
+                your business needs.
+              </p>
+              <div class="feature-decoration"></div>
+            </div>
+
+            <div class="feature-card" style="animation-delay: 400ms">
+              <div class="feature-gradient-bg gradient-coral"></div>
+              <div class="feature-icon gradient-coral">
+                <svg
+                  width="32"
+                  height="32"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="white"
+                  stroke-width="2"
+                >
+                  <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+                  <circle cx="9" cy="7" r="4" />
+                  <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                </svg>
+              </div>
+              <h3 class="feature-title">Team Collaboration</h3>
+              <p class="feature-description">
+                Work together seamlessly with real-time collaboration and
+                communication tools.
+              </p>
+              <div class="feature-decoration"></div>
+            </div>
+
+            <div class="feature-card" style="animation-delay: 500ms">
+              <div class="feature-gradient-bg gradient-blue"></div>
+              <div class="feature-icon gradient-blue">
+                <svg
+                  width="32"
+                  height="32"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="white"
+                  stroke-width="2"
+                >
+                  <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
+                </svg>
+              </div>
+              <h3 class="feature-title">Analytics & Insights</h3>
+              <p class="feature-description">
+                Data-driven insights and detailed analytics to help you make
+                informed decisions.
+              </p>
+              <div class="feature-decoration"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" class="contact-section">
+        <div class="section-bg-blur contact-bg-blur-1"></div>
+        <div class="section-bg-blur contact-bg-blur-2"></div>
+
+        <div class="container">
+          <div class="section-header animate-fade-in">
+            <h2 class="section-title gradient-text">Get In Touch</h2>
+            <p class="section-description">
+              Have a question? We'd love to hear from you. Send us a message and
+              we'll respond as soon as possible.
+            </p>
+          </div>
+
+          <div class="contact-grid animate-fade-in-delay">
+            <div class="contact-info">
+              <div class="contact-info-card">
+                <div class="contact-info-icon gradient-coral">
+                  <svg
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="white"
+                    stroke-width="2"
+                  >
+                    <rect width="20" height="16" x="2" y="4" rx="2" />
+                    <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="contact-info-label">Email</h3>
+                  <p class="contact-info-value">fireflies@ygmail.com</p>
+                </div>
+              </div>
+
+              <div class="contact-info-card">
+                <div class="contact-info-icon gradient-blue">
+                  <svg
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="white"
+                    stroke-width="2"
+                  >
+                    <path
+                      d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"
+                    />
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="contact-info-label">Phone</h3>
+                  <p class="contact-info-value">+91 1234567890</p>
+                </div>
+              </div>
+
+              <div class="contact-info-card">
+                <div class="contact-info-icon gradient-coral">
+                  <svg
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="white"
+                    stroke-width="2"
+                  >
+                    <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+                    <circle cx="12" cy="10" r="3" />
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="contact-info-label">Location</h3>
+                  <p class="contact-info-value">London</p>
+                </div>
+              </div>
+
+              <div class="contact-benefits">
+                <h3 class="contact-benefits-title">Why Contact Us?</h3>
+                <ul class="contact-benefits-list">
+                  <li>✓ Quick response within 24 hours</li>
+                  <li>✓ Expert support team ready to help</li>
+                  <li>✓ Personalized solutions for your needs</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="contact-form-wrapper">
+              <form id="contactForm" class="contact-form">
+                <div class="form-group">
+                  <label for="name" class="form-label">Name</label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    class="form-input"
+                    placeholder="Your full name"
+                    required
+                  />
+                  <span class="form-error" id="nameError"></span>
+                </div>
+
+                <div class="form-group">
+                  <label for="email" class="form-label">Email</label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    class="form-input"
+                    placeholder="your.email@example.com"
+                    required
+                  />
+                  <span class="form-error" id="emailError"></span>
+                </div>
+
+                <div class="form-group">
+                  <label for="message" class="form-label">Message</label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    class="form-textarea"
+                    placeholder="Tell us how we can help you..."
+                    rows="6"
+                    required
+                  ></textarea>
+                  <span class="form-error" id="messageError"></span>
+                </div>
+
+                <button type="submit" class="btn btn-gradient btn-lg btn-full">
+                  <span id="submitText">Send Message</span>
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-gradient"></div>
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <img src="{{ url_for('static', filename='logo.png') }}" alt="Logo" >
+            <p class="footer-description">
+              Analyze traffic patterns and mobility data to understand
+                environmental impacts including air pollution, noise, and fuel
+                consumption.
+            </p>
+            <div class="social-links">
+              <a href="#" aria-label="GitHub" class="social-link">
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.17 6.839 9.49.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.464-1.11-1.464-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.114 2.504.336 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.167 22 16.418 22 12c0-5.523-4.477-10-10-10z"
+                  />
+                </svg>
+              </a>
+              <a href="#" aria-label="Twitter" class="social-link">
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"
+                  />
+                </svg>
+              </a>
+              <a href="#" aria-label="LinkedIn" class="social-link">
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"
+                  />
+                  <circle cx="4" cy="4" r="2" />
+                </svg>
+              </a>
+              <a href="#" aria-label="Instagram" class="social-link">
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
+                  <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z" />
+                  <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
+                </svg>
+              </a>
+            </div>
+          </div>
+
+          <div class="footer-links">
+            <h4 class="footer-links-title">Product</h4>
+            <ul class="footer-links-list">
+              <li>
+                <button onclick="scrollToSection('features')">Features</button>
+              </li>
+              <li>
+                <button onclick="scrollToSection('contact')">Pricing</button>
+              </li>
+              <li>
+                <button onclick="scrollToSection('contact')">
+                  Documentation
+                </button>
+              </li>
+              <li><button onclick="scrollToSection('contact')">API</button></li>
+            </ul>
+          </div>
+
+          <div class="footer-links">
+            <h4 class="footer-links-title">Company</h4>
+            <ul class="footer-links-list">
+              <li>
+                <button onclick="scrollToSection('contact')">About Us</button>
+              </li>
+              <li>
+                <button onclick="scrollToSection('contact')">Careers</button>
+              </li>
+              <li>
+                <button onclick="scrollToSection('contact')">Blog</button>
+              </li>
+              <li>
+                <button onclick="scrollToSection('contact')">Press Kit</button>
+              </li>
+            </ul>
+          </div>
+
+          <div class="footer-links">
+            <h4 class="footer-links-title">Support</h4>
+            <ul class="footer-links-list">
+              <li>
+                <button onclick="scrollToSection('contact')">
+                  Help Center
+                </button>
+              </li>
+              <li>
+                <button onclick="scrollToSection('contact')">Contact</button>
+              </li>
+              <li>
+                <button onclick="scrollToSection('contact')">Status</button>
+              </li>
+              <li>
+                <button onclick="scrollToSection('contact')">
+                  Privacy Policy
+                </button>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p class="footer-copyright">
+            &copy; <span id="currentYear"></span> EcoFlow. All rights
+            reserved.
+          </p>
+          <p class="footer-made-with">
+            Made with
+            <svg
+              class="heart-icon"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+            >
+              <path
+                d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"
+              />
+            </svg>
+            by Fireflies
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <div id="toast" class="toast">
+      <div class="toast-content">
+        <svg
+          class="toast-icon"
+          width="20"
+          height="20"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+        >
+          <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+          <polyline points="22 4 12 14.01 9 11.01" />
+        </svg>
+        <span id="toastMessage"></span>
+      </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+  </body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Traffic Visualization</title>
+
+    <!-- TomTom Map SDK -->
+    <link rel="stylesheet" href="https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.19.0/maps/maps.css">
+    <script src="https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.19.0/maps/maps-web.min.js"></script>
+
+    <style>
+        body { 
+            margin: 0; 
+            font-family: 'Segoe UI', Arial, sans-serif; 
+            background: #f4f7fa;
+        }
+
+        #map { width: 100%; height: 100vh; }
+
+        .info-box {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: white;
+            padding: 20px;
+            width: 320px;
+            border-radius: 15px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.15);
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .info-box h3 {
+            margin-top: 0;
+            font-size: 18px;
+            color: #333;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 6px;
+        }
+
+        .incident-popup {
+            font-size: 14px;
+            padding: 8px;
+        }
+
+        .incident-title {
+            font-weight: bold;
+            color: #c62828;
+        }
+
+    </style>
+</head>
+
+<body>
+
+<div id="map"></div>
+
+<!-- Traffic Info Card -->
+<div class="info-box" id="trafficInfo">
+    <h3>Traffic Details</h3>
+    <p>Click any road segment to load live traffic information.</p>
+</div>
+
+<script src="{{ url_for('static', filename='traffic-visualization.js') }}"></script>
+
+</body>
+</html>
