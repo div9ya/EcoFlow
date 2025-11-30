@@ -1,0 +1,11 @@
+Flask
+requests
+python-dotenv
+pandas
+numpy
+joblib
+matplotlib
+seaborn
+Flask-Cors
+statsmodels
+geopy
