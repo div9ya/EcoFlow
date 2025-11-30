@@ -9,3 +9,4 @@ seaborn
 Flask-Cors
 statsmodels
 geopy
+gunicorn
